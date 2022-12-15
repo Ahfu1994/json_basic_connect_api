@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="addButton">Add to Storage</div>
+    <div id="seeButton">View Storage</div>
+    First : <input type="text" id="firstName" >
+    Last : <input type="text" id="lasttName" >
+
+    <script>
+        const addBtn = document.getElementById('addButton');
+        addBtn.addEventListener('click',addToStorage);
+        const seeBtn = document.getElementById('seeButton');
+        seeBtn.addEventListener('click',viewToStorage);
+       
+        const people = JSON.parse(localStorage.getItem('tester1')) || {'first':'none','last':'none'};
+        console.log(people);
+
+        function addToStorage() {
+            let tempFirst = document.getElementById('firstName').value;
+            let tempLast = document.getElementById('lasttName').value;
+            let myObj = JSON.stringify({
+                "first":tempFirst,
+                "last":tempLast
+            });
+            // console.log(myObj);
+            localStorage.setItem('tester1',myObj) //save data to localstorage
+            // console.log('Clicked '+myObj);
+        }
+
+        function viewToStorage() {
+            let tempHolder = JSON.parse(localStorage.getItem('tester1'))||people; //get data from localstorage
+            console.log(tempHolder);
+        }
+        
+        
+       
+    </script>
+    
+</body>
+</html>

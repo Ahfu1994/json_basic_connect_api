@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        let myJSON = {"first":"Chiradet","age":30};
+        let myJSON1 = {name:"Chiradet","age":30};
+
+        let myObj = {"test":function () { // method in json can not accept
+            return "HELLO"; 
+        }}
+
+        let myJSONstringified = JSON.stringify(myJSON); // change to string 
+
+        let myJSONparsed = JSON.parse(myJSONstringified); // change string to json
+        myJSONparsed.first = "John";
+        console.log(myJSONparsed);
+
+        let sendData = JSON.stringify(myJSONparsed);
+        console.log(sendData);
+
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

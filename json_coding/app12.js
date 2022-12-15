@@ -1,0 +1,50 @@
+const output = document.querySelector('.output');
+const results = document.createElement('div');
+const btn = document.createElement('button');
+btn.textContent = 'Click me';
+output.append(btn);
+output.append(results);
+results.textContent = 'Message';
+
+btn.addEventListener('click',(e)=>{
+    const url = 'data12.json';
+    results.textContent = "Loading...";
+    fetch(url).then(rep=>rep.json())
+    .then((data)=>{
+        results.innerHTML = "Results:<br>";
+        console.log(data);
+        addtoPage(data[1].country);
+        addtoPage(data[0].people[1].cities);
+        addtoPage(data[0].people[0].names);
+
+    });
+});
+
+function addObjPage(arr) {
+    arr.forEach((item)=>{
+        const div = document.createElement('div');
+        results.append(div);
+    //    console.log(item);
+       const vals = Object.values(item);
+       console.log(vals.join(' '));
+       vals.forEach((val)=>{
+            console.log(val);
+       });
+       const fullName = Object.values(item).join(' ');
+       console.log(fullName);
+    });
+}
+
+function addtoPage(arr) {
+    arr.forEach((item)=>{
+        const div = document.createElement('div');
+        results.append(div);
+        let temp = item;
+       if(typeof(item) == 'object'){
+            console.log(typeof(item));
+            const fullName = Object.values(item).join(' ');
+           temp = fullName;
+       }
+        div.textContent = temp;
+    });
+}

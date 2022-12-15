@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="addButton">Add to Storage</div>
+    <div id="seeButton">View Storage</div>
+    First : <input type="text" id="firstName" >
+    Last : <input type="text" id="lasttName" >
+
+    <script>
+        const addBtn = document.getElementById('addButton');
+        addBtn.addEventListener('click',addToStorage);
+        const seeBtn = document.getElementById('seeButton');
+        seeBtn.addEventListener('click',viewToStorage);
+        let myJSON = {"first":"Chiradet","age":30};
+
+        function addToStorage() {
+            let tempFirst = document.getElementById('firstName').value;
+            let tempLast = document.getElementById('lasttName').value;
+            let myObj = {"first":tempFirst,"last":tempLast};
+            console.log(myObj);
+            localStorage.setItem('tester',myObj) //save data to localstorage
+            console.log('Clicked '+myObj);
+        }
+
+        function viewToStorage() {
+            let tempHolder = localStorage.getItem('tester');
+            console.log(tempHolder);
+        }
+        
+        
+        let myJSONstringified = JSON.stringify(myJSON); // change to string 
+        let myJSONparsed = JSON.parse(myJSONstringified); // change string to json
+        myJSONparsed.first = "John";
+        console.log(myJSONparsed);
+
+        let sendData = JSON.stringify(myJSONparsed);
+        console.log(sendData);
+    </script>
+    
+</body>
+</html>

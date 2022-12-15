@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="addButton">Get JSON</div>
+    <div id="output"></div>
+
+    <script>
+        const addButton = document.getElementById('addButton');
+        addButton.addEventListener('click',addJSON);
+
+        const output = document.getElementById('output');
+
+        function addJSON(){
+            console.log('clicked');
+            output.innerHTML = "Working";
+            const url = "//dummyjson.com/products/1";
+            fetch(url).then(function (response) {
+                console.log(response.status);
+                return response.text();
+            }).then(function(data){
+                console.log(data);
+                let data1 = JSON.parse(data);
+                output.innerHTML = "id : "+data1.id+"<br>title : "+data1.title+"<br>description : "+data1.description+"<br>price : "+data1.price;
+                // console.log(JSON.parse(data));
+            });
+        }
+       
+       
+    </script>
+    
+</body>
+</html>
+

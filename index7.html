@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="addButton" style="cursor: pointer;">Get User</div>
+    <div id="testButton" style="cursor: pointer;">Test Map</div>
+    <div id="output"></div>
+
+    <script>
+        const addButton = document.getElementById('addButton');
+        addButton.addEventListener('click',addJSON);
+
+        const testButton = document.getElementById('testButton');
+        testButton.addEventListener('click',tester);
+
+        function tester(){
+            console.log('clicked');
+            let tempArray = [4,5,6,7,8,9];
+            const html = tempArray.map(function(val,index){
+               return '<li>'+index+'='+(val*2)+'</li>';
+            });
+            console.log(html.join(''));
+            output.innerHTML = '<ul>'+html.join('')+'</ul>';
+
+        }
+
+        String.prototype.capitalize = function() {
+            return this.charAt(0).toUpperCase()+this.slice(1);
+        } 
+        const output = document.getElementById('output');
+
+        function addJSON(){
+            const url = "https://randomuser.me/api/?results=15";
+            fetch(url).then(function (response) {
+                console.log(response.status);
+                return response.json();
+            }).then(function(data){
+                
+                let people = data.results;
+                console.log(people);
+                const html = people.map(function(val,index){
+                    // console.log(val);
+                    let firstName = val.name.first.capitalize();
+                    let lastName = val.name.last.capitalize();
+                    return '<li>'+(index+1)+' : '+firstName+' '+lastName+'</li>';
+
+                });
+                output.innerHTML = '<ul style=list-style:none>'+html.join('')+'</ul>';
+                
+            });
+        }
+       
+       
+    </script>
+    
+</body>
+</html>
+

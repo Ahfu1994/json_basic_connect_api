@@ -1,0 +1,34 @@
+[
+    {
+        "people":[
+            {
+                "names":[
+                    {
+                        "first":"Chiradet",
+                        "last":"Khositanon"
+                    },
+                    {
+                        "first":"Gaurav",
+                        "last":"Bhardwaj"
+                    },
+                    {
+                        "first":"Morgan",
+                        "last":"Deschamps"
+                    }
+
+                ]
+            },
+            {
+                "cities":[
+                    "Puumala","Mckinney","Toledo"
+                ]
+            }
+        ]
+
+    },
+    {
+        "country":[
+            "Finland","United States","Spain"
+        ]
+    }
+]
